@@ -1,0 +1,58 @@
+<%- include("components/header.ejs") -%>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="">admin</a>
+      </li>
+    
+    </ul>
+  </div>  
+</nav>
+
+
+<div class="wrapper">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="page-header clearfix">
+                  <h2 class="pull-left">Users</h2>
+                 
+              </div>
+         
+                     <table class='table table-bordered table-striped' >
+                         <thead>
+                             <tr>
+                                  <th>#</th>
+                                  <th>username</th>
+                                  <th>email</th>
+                                 
+                              </tr>
+                           </thead>
+                           <tbody>
+
+                              <% for(let article of users){ %>
+                                <tr class = <%= article['id'] %>>
+                                  <td><%= article['id'] %> </td>
+                                  <td><%= article['username'] %> </td>
+                                  <td><%= article['email'] %> </td>
+                                  
+
+                                  <td>
+                                     <a href='#' title='View Record' data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>
+                                    <a href='#' title='Update Record' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>
+                                    <a href='/admin/articles/delete/<%= article['id'] %>' title='Update Record' data-toggle='tooltip'><button class="deleteButton" id="<%= article['id'] %>" >delete</button></a>
+                                  
+                                 </td>
+                              </tr>
+
+
+
+                           <% } %>
+                               
+                       <script src="/javascripts/admin.js"></script>
+                         </tbody>
+
+
+<%- include("components/footer.ejs") -%>
